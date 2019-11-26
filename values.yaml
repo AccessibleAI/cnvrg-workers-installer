@@ -1,0 +1,67 @@
+# Default values for cnvrg-chart.
+# This is a YAML-formatted file.
+global:
+  namespace: cnvrg
+  domain: #CLUSTER_DOMAIN
+  domain_access_key: #CLUSTER_ROUTES_53
+  domain_secret_key: #CLUSTER_ROUTES_53
+  domain_hosted_zone_id: #CLUSTER_ROUTES_53
+  app_domain: #APP_SERVER_DOMAIN
+compute_cluster:
+  enabled: false
+  kube_config_path: config2
+  domain: ""
+gcp:
+  storage_keyfile: ""
+  storage_project: ""
+  storage_bucket: ""
+imageCredentials:
+  registry: https://index.docker.io/v1/
+  username: #DOCKER_HUB_APP
+  password: #DOCKER_HUB_APP
+app:
+  enabled: true
+  rails_env: app
+  secret: #RAILS SECRET 0d2b33c2cc19cfaa838d3c354354a18fcc92beaaa8e97889ef99341c8aaf963ad3afcf0f7c20454cabb5c573c3fc35b60221034e109f4fb651ed1415bf61e9d5
+  sts_iv: 'DeJ/CGz/Hkb/IbRe4t1xLg==\n'
+  sts_key: 05646d3cbf8baa5be7150b4283eda07d
+  image: cnvrg/app:elbit-22-9 #CHANGE HERE
+  config:
+    kube_max_deploy_time: 180
+    kube_max_spot_setup_time:  10
+    kube_max_deploy_setup_time: 10
+    kube_max_deploy_startup_time: 10
+    extract_tags_from_cmd: false
+    check_job_expiration: true
+minio:
+  access_key: ""
+  secret_key: ""
+  sse_master_key: "" 
+postgres:
+  enabled: true
+  db_name: cnvrg_production
+  password: #DBPASS
+  user: cnvrg
+seeder:
+  enabled: false
+istio:
+  enabled: true
+  serviceType: LoadBalancer
+cert-manager:
+  enabled: true
+prometheus:
+  enabled: false
+grafana:
+  enabled: false
+cluster-autoscaler:
+  enabled: false
+elasticsearch:
+  enabled: true
+kibana:
+  enabled: false
+nvidia-device-plugin:
+  enabled: false
+elastalert:
+  enabled: false
+fluentd:
+  enabled: false

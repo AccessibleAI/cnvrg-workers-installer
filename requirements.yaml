@@ -1,0 +1,13 @@
+dependencies:
+- name: istio
+  condition: istio.enabled
+- name: cert-manager
+  condition: cert-manager.enabled
+- name: prometheus
+  condition: prometheus.enabled
+- name: grafana
+  condition: grafana.enabled
+- name: nvidia-device-plugin
+  condition: nvidia-device-plugin.enabled
+- name: fluentd 
+  condition: fluentd.enabled
